@@ -1,0 +1,99 @@
+.footer {
+  background-color: #eee;
+}
+
+.footer .box-container {
+  border: 0px solid;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 85vw;
+  margin: auto;
+  
+    
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap; 
+    justify-content: center;
+    text-align: center;
+  }
+}
+  
+.footer .box-container .box {
+  border: 0px solid;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 1fr);
+  gap: .5rem;
+  padding: 10px;
+  @media screen and (max-width: 768px) {
+      margin-bottom: 1.5rem; 
+    }
+}
+  
+.footer .box-container .box h3 {
+  font-size: 2rem;
+}
+  
+.footer .box-container .box h3 i {
+  color: green;
+}
+  
+.footer .box-container .box a {
+  display: block;
+  color: grey;
+}
+  
+.footer .box-container .box a:hover i {
+  padding-right: 2rem;
+}
+  
+.footer .box-container .box a i {
+  color: green;
+  padding-right: .5rem;
+}
+  
+.footer .box-container .box p {
+  font-size: 1.5rem;
+  color: grey;
+}
+  
+.footer .box-container .box .share a {
+  display: inline;
+  border: 0px solid;
+  border-radius: .5rem;
+  font-size: 2rem;
+  color: black;
+  margin-left: .2rem;
+  background-color: #eee;
+  text-align: center;
+  padding: 15px;
+}
+  
+.footer .box-container .box .share a:hover {
+  background-color: green;
+  color: white;
+}
+  
+.footer .box-container .box .email {
+  margin: .7rem;
+  padding: 1rem;
+  border-radius: .5rem;
+  background-color: #eee;
+  font-size: 1.6rem;
+  color: black;
+  text-transform: none;
+}
+  
+.footer .credit {
+  text-align: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  padding-top: 1.5rem;
+  font-size: 2rem;
+  border-top: black solid;
+  width: 85vw;
+  margin: auto;
+}
+  
+.footer .credit span {
+  color: green;
+}

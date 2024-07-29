@@ -1,0 +1,9 @@
+:root {
+    --primary-color: #008754;  /* A deep green color */
+    --primary-light: #00a86b;  /* A lighter green for hover states */
+    --primary-dark: #006c43;   /* A darker green for active states */
+    --text-color: #333333;     /* Dark gray for main text */
+    --background-color: #f4f4f4; /* Light gray for background */
+    --card-bg-color: #ffffff;   /* White for card backgrounds */
+    --border-color: #e0e0e0;    /* Light gray for borders */
+  }

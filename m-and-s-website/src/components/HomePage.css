@@ -1,0 +1,118 @@
+@import './colors.css';
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.Main {
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.column {
+  flex-basis: calc(50% - 20px);
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  background-color: var(--card-bg-color);
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-light);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.monthly-special .special-card {
+  background-color: var(--primary-light);
+  color: var(--card-bg-color);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.monthly-special .discount {
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+.view-recipe-btn, .view-all-events-btn {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--card-bg-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.view-recipe-btn:hover, .view-all-events-btn:hover {
+  background-color: var(--primary-light);
+}
+
+.we-offer-from .country-flags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.country-flag-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.country-name {
+  font-size: 1em;
+  margin-left: 10px;
+}
+
+.community-events ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.community-events li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: var(--background-color);
+  border-radius: 5px;
+}
+
+.space {
+  height: 40px;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .column {
+    flex-basis: 100%;
+  }
+}

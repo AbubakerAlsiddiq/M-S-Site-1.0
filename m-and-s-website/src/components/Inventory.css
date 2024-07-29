@@ -1,0 +1,121 @@
+@import './colors.css';
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+}
+
+.inventory-page-container {
+  max-width: 80vw;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.inventory-page-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+  background-size: 20px 35px;
+  transform: rotate(30deg) scale(2);
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.inventory-page-container h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.inventory-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.category {
+  width: 200px;
+  height: 230px;
+  margin: 5px 10px 20px;
+  position: relative;
+  background-color: var(--card-bg-color);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  transition: all 0.3s ease;
+}
+
+.category a {
+  text-decoration: none;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 15px;
+  text-align: center;
+}
+
+.category h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.category p {
+  font-size: 14px;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.category-icon {
+  color: var(--secondary-color);
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.category:hover {
+  margin-top: 50px; 
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .inventory-page-container h1 {
+    font-size: 32px;
+  }
+
+  .category {
+    width: 150px;
+    height: 173px;
+  }
+
+  .category h2 {
+    font-size: 18px;
+  }
+
+  .category p {
+    font-size: 12px;
+  }
+}
