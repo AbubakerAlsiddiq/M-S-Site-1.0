@@ -10,7 +10,7 @@ body {
 }
 
 .inventory-page-container {
-  max-width: 80vw;
+  max-width: 90vw;
   margin: 20px auto;
   padding: 20px;
   background-color: var(--background-color);
@@ -118,4 +118,33 @@ body {
   .category p {
     font-size: 12px;
   }
+}
+
+.button-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.all-items-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.all-items-button:hover {
+  transform: scale(1.1);
+}
+
+.button-container {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
 }
