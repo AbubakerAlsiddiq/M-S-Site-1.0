@@ -7,6 +7,7 @@ import {
   faChevronLeft,
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
+import itemImages from "./ItemImages";
 
 interface Item {
   key: string;
@@ -30,9 +31,12 @@ const Category: React.FC = () => {
         if (!categoryName) {
           return;
         }
-        const decodeCategoryName = decodeURIComponent(categoryName);
+        console.log("Original categoryName:", categoryName);
+        const encodedCategoryName = encodeURIComponent(categoryName);
+        console.log("Encoded categoryName:", encodedCategoryName);
+
         const response = await fetch(
-          `https://inventory.mandsorganics-delmarvamediterraneanmarket.com/api/inventory/${decodeCategoryName}`
+          `https://inventory.mandsorganics-delmarvamediterraneanmarket.com/api/inventory/${encodedCategoryName}`
         );
         const data: { [key: string]: number } = await response.json();
         const itemsArray: Item[] = Object.keys(data).map((itemName) => ({
@@ -79,7 +83,11 @@ const Category: React.FC = () => {
       <div className="items-container">
         {items.map((item) => (
           <div className="item" key={item.key}>
-            <div className="item-image-placeholder"></div>
+            <img
+              src={itemImages[item.name] || "/path/to/default-image.jpg"}
+              alt={item.name}
+              className="item-image"
+            />
             <h2>{item.name}</h2>
             <p className="item-price">${item.price.toFixed(2)}</p>
             <button
