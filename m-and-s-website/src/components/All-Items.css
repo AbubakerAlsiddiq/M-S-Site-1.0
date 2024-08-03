@@ -1,0 +1,98 @@
+@import './colors.css';
+
+.all-items-page-container {
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--background-color);
+}
+
+.all-items-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+  }
+  .back-button {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .all-items-header h1 {
+    font-size: 3em;
+    margin: 10px;
+    color: var(--primary-color);
+    text-align: center;
+    flex-grow: 1;
+    padding: 10px;
+  }
+
+.all-items-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.item {
+  background: var(--card-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+}
+
+.item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item-image {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.item h2 {
+  font-size: 1em;
+  margin: 0 0 10px 0;
+  color: var(--text-color);
+}
+
+.item-price {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.add-to-cart-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+  background-color: var(--primary-light);
+}
+
+.loading, .error, .no-items {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .all-items-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
