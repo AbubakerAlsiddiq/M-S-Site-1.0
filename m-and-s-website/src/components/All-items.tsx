@@ -3,7 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import LoadingScreen from "./LoadingScreen";
 import "./all-items.css";
 import Footer from "./Footer";
+import Logo from "../assets/M_S_new_logo.png";
 import itemImages from "./ItemImages";
+import { useCart } from "./CartContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 interface Item {
   key: string;
@@ -16,7 +20,9 @@ const AllItems: React.FC = () => {
   const [allItems, setAllItems] = useState<Item[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [addedItems, setAddedItems] = useState<{ [key: string]: boolean }>({});
   const navigate = useNavigate();
+  const { addItemToCart } = useCart();
 
   useEffect(() => {
     const fetchAllItems = async () => {
@@ -54,6 +60,19 @@ const AllItems: React.FC = () => {
     fetchAllItems();
   }, []);
 
+  const handleAddToCart = (item: Item) => {
+    addItemToCart({
+      key: item.key,
+      name: item.key,
+      price: item.price,
+      quantity: 1,
+    });
+    setAddedItems((prev) => ({ ...prev, [item.key]: true }));
+    setTimeout(() => {
+      setAddedItems((prev) => ({ ...prev, [item.key]: false }));
+    }, 2000);
+  };
+
   if (isLoading) {
     return <LoadingScreen />;
   }
@@ -78,15 +97,37 @@ const AllItems: React.FC = () => {
         <div className="all-items-container">
           {allItems.map((item) => (
             <div key={`${item.category}-${item.key}`} className="item">
-              <img
-                src={itemImages[item.key] || itemImages.Logo}
-                alt={item.key}
-                className="item-image"
-              />
-              <h2>{item.key}</h2>
-              <p>Category: {item.category}</p>
-              <p className="item-price">${item.price.toFixed(2)}</p>
-              <button className="add-to-cart-button">Add to Cart</button>
+              <Link
+                to={`/category/${item.category}/product/${item.key}`}
+                className="item-link"
+              >
+                <div className="item-image-container">
+                  <img
+                    src={itemImages[item.key] || Logo}
+                    alt={item.key}
+                    className="item-image"
+                  />
+                </div>
+                <h2>{item.key}</h2>
+                <p className="item-price">${item.price.toFixed(2)}</p>
+              </Link>
+              <button
+                className={`add-to-cart-button ${
+                  addedItems[item.key] ? "added" : ""
+                }`}
+                onClick={() => handleAddToCart(item)}
+                aria-label={`Add ${item.key} to cart`}
+              >
+                {addedItems[item.key] ? (
+                  <>
+                    <FontAwesomeIcon icon={faCheck} /> Added
+                  </>
+                ) : (
+                  <>
+                    <FontAwesomeIcon icon={faShoppingCart} /> Add to Cart
+                  </>
+                )}
+              </button>
             </div>
           ))}
         </div>
