@@ -1,14 +1,12 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faShoppingCart,
+  faShoppingBasket,
   faPhone,
   faEnvelope,
-  faMapLocation,
-  faMapLocationDot,
-  faArrowRight,
-  faCartShopping,
-  faShoppingBasket,
+  faMapMarkerAlt,
+  faChevronRight,
+  faClock,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -19,121 +17,127 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import "./Footer.css";
 
+const socialLinks = [
+  {
+    href: "https://www.facebook.com/DelmarvaMediterraneanMarket/",
+    icon: faFacebook,
+    title: "Facebook",
+  },
+  {
+    href: "https://www.instagram.com/delmarvamediterraneanmarket/",
+    icon: faInstagram,
+    title: "Instagram",
+  },
+  {
+    href: "https://www.tiktok.com/@your_username",
+    icon: faTiktok,
+    title: "TikTok",
+  },
+  {
+    href: "https://twitter.com/your_username",
+    icon: faTwitter,
+    title: "Twitter",
+  },
+  {
+    href: "https://www.yelp.com/biz/m-and-s-organics-salisbury",
+    icon: faYelp,
+    title: "Yelp",
+  },
+];
+
+const quickLinks = [
+  { href: "/", text: "Home" },
+  { href: "/inventory", text: "Inventory" },
+  { href: "/about", text: "About Us" },
+  { href: "/categories", text: "Categories" },
+  { href: "/contact", text: "Contact" },
+];
+
+const contactInfo = [
+  { icon: faPhone, text: "410-341-7171" },
+  { icon: faEnvelope, text: "aahmedgrow@gmail.com" },
+  { icon: faMapMarkerAlt, text: "Salisbury, MD, USA" },
+  { icon: faClock, text: "Mon - Sun: 10:00 AM - 8:00 PM" },
+];
+
 function Footer() {
   return (
-    <div className="footer">
-      <div className="box-container">
-        <div className="box">
-          <h3>
-            Groco
-            <i>
-              <FontAwesomeIcon icon={faShoppingBasket} />
-            </i>
-          </h3>
-          <p>Follow Us On Social Media!</p>
-          <div className="share">
-            <a
-              href="https://www.facebook.com/DelmarvaMediterraneanMarket/"
-              title="facebook"
-              className="links"
-            >
-              <FontAwesomeIcon icon={faFacebook} />
-            </a>
-            <a
-              href="https://www.instagram.com/delmarvamediterraneanmarket/"
-              title="Instagram"
-              className="links"
-            >
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-            <a
-              href="https://www.tiktok.com/@your_username"
-              title="TikTok"
-              className="links"
-            >
-              <FontAwesomeIcon icon={faTiktok} />
-            </a>
-            <a
-              href="https://twitter.com/your_username"
-              title="Twitter"
-              className="links"
-            >
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
-            <a
-              href="https://www.yelp.com/biz/m-and-s-organics-salisbury"
-              title="Yelp"
-              className="links"
-            >
-              <FontAwesomeIcon icon={faYelp} />
-            </a>
+    <footer className="footer">
+      <div className="footer-top">
+        <div className="container">
+          <div className="row">
+            <div className="footer-column">
+              <h3 className="footer-logo">
+                M&S Organics <FontAwesomeIcon icon={faShoppingBasket} />
+              </h3>
+              <p>
+                Your one-stop shop for fresh, organic, and delicious groceries.
+              </p>
+              <div className="social-links">
+                {socialLinks.map((link, index) => (
+                  <a
+                    key={index}
+                    href={link.href}
+                    title={link.title}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FontAwesomeIcon icon={link.icon} />
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div className="footer-column">
+              <h4>Quick Links</h4>
+              <ul>
+                {quickLinks.map((link, index) => (
+                  <li key={index}>
+                    <a href={link.href}>
+                      <FontAwesomeIcon icon={faChevronRight} /> {link.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="footer-column">
+              <h4>Contact Info</h4>
+              <ul className="contact-info">
+                {contactInfo.map((info, index) => (
+                  <li key={index}>
+                    <FontAwesomeIcon icon={info.icon} />
+                    <span>{info.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="footer-column">
+              <h4>Newsletter</h4>
+              <p>Subscribe for exclusive offers and updates!</p>
+              <form
+                className="newsletter-form"
+                onSubmit={(e) => e.preventDefault()}
+              >
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  required
+                  aria-label="Email for newsletter"
+                />
+                <button type="submit">Subscribe</button>
+              </form>
+            </div>
           </div>
         </div>
-
-        <div className="box">
-          <h3>Contact Info</h3>
-          <a href="#" className="links" title="phoneNumber">
-            <i>
-              <FontAwesomeIcon icon={faPhone} />
-            </i>
-            410-341-7171
-          </a>
-          <a href="#" className="links" title="email">
-            <i>
-              <FontAwesomeIcon icon={faEnvelope} />
-            </i>
-            aahmedgrow@gmail.com
-          </a>
-          <a href="#" className="links" title="mapMarker">
-            <i>
-              <FontAwesomeIcon icon={faMapLocationDot} />
-            </i>
-            Salisbury, MD, USA
-          </a>
-        </div>
-
-        <div className="box">
-          <h3>Quick Links</h3>
-          <a href="#" className="links" title="Home">
-            <i>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </i>
-            Home
-          </a>
-          <a href="#" className="links" title="Inventory">
-            <i>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </i>
-            Inventory
-          </a>
-          <a href="#" className="links" title="About">
-            <i>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </i>
-            About
-          </a>
-          <a href="#" className="links" title="Categories">
-            <i>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </i>
-            Categories
-          </a>
-        </div>
-
-        <div className="box">
-          <h3>Newsletter</h3>
-          <p>Subscribe For Latest Updates!</p>
-          <input type="email" placeholder="Your Email" className="email" />
-          <input type="submit" value="Subscribe" className="btn" />
-          <img title="Payments" src="image/payment.png" />
+      </div>
+      <div className="footer-bottom">
+        <div className="container">
+          <p>
+            &copy; {new Date().getFullYear()} M&S Organics - Delmarva's
+            Mediterranean Market. All Rights Reserved.
+          </p>
         </div>
       </div>
-
-      <div className="credit">
-        Powered By <span>M&S Organics- Delmarva's Mediterranean Market</span> |
-        All Rights Reserved
-      </div>
-    </div>
+    </footer>
   );
 }
 
