@@ -49,11 +49,11 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.item-image-placeholder {
-    width: 100%;
-    padding-bottom: 100%; /* Creates a square aspect ratio */
-    background-color: #f0f0f0;
-    margin-bottom: 10px;
+.item-image {
+  width: 100%;
+  height: 225px;
+  object-fit: contain;
+  margin-bottom: 10px;
 }
 
 .item h2 {
