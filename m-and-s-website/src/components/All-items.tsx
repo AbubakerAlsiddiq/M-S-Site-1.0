@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useMemo } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import LoadingScreen from "./LoadingScreen";
 import "./all-items.css";
 import Footer from "./Footer";
@@ -23,6 +23,9 @@ const AllItems: React.FC = () => {
   const [addedItems, setAddedItems] = useState<{ [key: string]: boolean }>({});
   const navigate = useNavigate();
   const { addItemToCart } = useCart();
+
+  const location = useLocation();
+  const searchQuery = new URLSearchParams(location.search).get("query") || "";
 
   useEffect(() => {
     const fetchAllItems = async () => {
@@ -73,6 +76,15 @@ const AllItems: React.FC = () => {
     }, 2000);
   };
 
+  const displayedItems = useMemo(() => {
+    if (!searchQuery) return allItems;
+    return allItems.filter(
+      (item) =>
+        item.key.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.category.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [allItems, searchQuery]);
+
   if (isLoading) {
     return <LoadingScreen />;
   }
@@ -92,10 +104,12 @@ const AllItems: React.FC = () => {
           <button className="back-button" onClick={() => navigate(-1)}>
             ← Back
           </button>
-          <h1>All Items</h1>
+          <h1>
+            {searchQuery ? `Search Results for "${searchQuery}"` : "All Items"}
+          </h1>
         </div>
         <div className="all-items-container">
-          {allItems.map((item) => (
+          {displayedItems.map((item) => (
             <div key={`${item.category}-${item.key}`} className="item">
               <Link
                 to={`/category/${item.category}/product/${item.key}`}
@@ -131,6 +145,9 @@ const AllItems: React.FC = () => {
             </div>
           ))}
         </div>
+        {searchQuery && displayedItems.length === 0 && (
+          <p>No items found matching your search.</p>
+        )}
       </div>
       <Footer />
     </>
