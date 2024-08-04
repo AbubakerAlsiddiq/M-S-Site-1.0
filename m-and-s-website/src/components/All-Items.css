@@ -28,7 +28,7 @@
 }
 
 .all-items-header h1 {
-  font-size: 4em;
+  font-size: 3rem;
   color: var(--primary-color);
   text-align: center;
   padding: 5px 10px;
@@ -130,7 +130,7 @@
   }
 
   .all-items-header h1 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
 
@@ -140,6 +140,7 @@
   }
 
   .all-items-header h1 {
-    font-size: 2rem;
+    font-size: 1rem;
+    align-items: center;
   }
 }
