@@ -1,10 +1,145 @@
-.DeliTitle {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-decoration: underline;
+@import './colors.css';
+
+.deli-container {
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.p {
-    text-align: center;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.deli-title {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.deli-container .deli-nav {
+  background-color: var(--navbar-bg-color);
+  border-radius: 50px;
+  padding: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 21vh; 
+  z-index: 998; 
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.deli-container .deli-nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.deli-container .deli-nav li {
+  margin: 0 10px;
+}
+
+.deli-container .deli-nav a {
+  text-decoration: none;
+  color: var(--card-bg-color);
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 25px;
+  transition: all var(--transition-speed) ease;
+}
+
+.deli-container .deli-nav a.active,
+.deli-container .deli-nav a:hover {
+  background-color: var(--hover-color);
+  color: var(--card-bg-color);
+}
+
+.deli-container .menu-section {
+  margin-top: 40px;
+}
+
+.deli-container .menu-section h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.deli-container .menu-section h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-light);
+  margin: 10px auto;
+}
+
+.deli-container .items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.deli-container .menu-item {
+  background-color: var(--card-bg-color);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.deli-container .menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.deli-container .menu-item h3 {
+  margin: 0 0 10px;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.deli-container .item-price,
+.deli-container .item-description {
+  font-weight: bold;
+  color: var(--primary-dark);
+  font-size: 1.1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.deli-container .item-price {
+  margin-bottom: 5px;
+}
+
+.deli-container .item-description {
+  font-weight: normal;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .deli-container .deli-nav {
+    width: calc(100% - 20px);
+    border-radius: 25px;
+  }
+
+  .deli-container .deli-nav ul {
+    flex-wrap: wrap;
+  }
+  
+  .deli-container .deli-nav li {
+    margin: 5px;
+  }
+  
+  .deli-container .items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
